@@ -5,7 +5,7 @@ The purpose of this analysis is to understand the temperature trends in Oahu, so
 
 ## Analysis
 
-This analysis tested our familiarty with using sqlite and sqlalchemy. I used both to extract data from the weather database and determine the summary statistics for temperatures first in June and then in December.  Turning the data into a list, I converted it to a dataframe and used .describe() to pull the summary statistics.  I used the same code below to pull the December data utilized "12" as the filter date.
+This analysis tested our familiarty with using sqlite and sqlalchemy. I used both to extract data from the weather database and determine the summary statistics for temperatures first in June and then in December.  Turning the data into a list, I converted it to a dataframe and used .describe() to pull the summary statistics.  I used the same code below to pull the December data but utilized "12" as the filter date.
 
 ```
 # 1. Write a query that filters the Measurement table to retrieve the temperatures for the month of June. 
@@ -20,7 +20,7 @@ june_temps_df = pd.DataFrame(june_temps, columns=["June_Temps"])
 june_temps_df.head(10)
 
 ```
-With the descriptive statistics in separate cells, I wanted to be able to compare them more closely, so I turned each of them into a dataframe and combined them using the following code, which produces the combined dataframe below.
+With the descriptive statistics in separate cells, I wanted to be able to compare them more closely, so I turned each of them into a dataframe and combined them using the following code, which produced the combined dataframe below.
 ```
 dec_info = dec_temps_df.describe()
 june_info = june_temps_df.describe()
@@ -29,12 +29,12 @@ temps_summary_df = june_info.merge(dec_info, left_index=True, right_index=True)
 temps_summary_df
 ```
 
-![temps_summary]()
+![temps_summary](https://github.com/ChallahBack83/surfs_up/blob/main/Data/summary_temps_data.png)
 
 Since the data is spread between different stations, I plotted both June and December into histograms to better visualize the spread of the data and summarize the findings.
 
-![june_temps_hist]()
-![dec_temps_hist]()
+![june_temps_hist](https://github.com/ChallahBack83/surfs_up/blob/main/Data/june_temps_hist.png)
+![dec_temps_hist](https://github.com/ChallahBack83/surfs_up/blob/main/Data/dec_temps_hist.png)
 
 ## Results
 
@@ -54,13 +54,13 @@ Since the data is spread between different stations, I plotted both June and Dec
 
 Overall, the statistics on temperatures for June and December on Oahu show that weather does not vary drastically throughout the year. Temperatures may be more consistent in warmer seasons, but the average daily temperatures still range mostly in the 70s, an acceptable temperature for surfing. This means there will be a draw for customers for any beach business promoting surfing and probably ice cream as well.
 
-To better understand this temperature, I took an average of the temperatures by day of the month. Since this data is over several years, it does not show the dramatic highs and lows of the summary statistics, but it further supports the conclusion that the temperatures are consistent.  Though December is expectedly lower on average than June, the average temperatures day to day are still within the ideal range of the 70s.
+To better understand this temperature, I took an average of the temperatures by day of the month. Since this data is over several years, it does not show the dramatic highs and lows of the summary statistics, but it further supports the conclusion that the temperatures are consistent.  Though December is expectedly lower than June, the average temperatures day to day are still within the ideal range of the 70s.
 
-![avg_temp_plot]()
+![avg_temp_plot](https://github.com/ChallahBack83/surfs_up/blob/main/Data/avg_temp_plot.png)
 
-A comparison of precipitation would also benefit our understanding of weather that impacts potential sales for our business. A quick look at the average by day of the month shows us that the average precipitation is fairly low for both months with a spike in mid-December. This further supports our conclusion that weather is ideal for our proposed beach business.  Plotting precipitation in a histogram by day rather than a "day of the month average" would give us a better visual on outliers for precipitation.
+A comparison of precipitation would also benefit an understanding of weather that impacts potential sales for our business. A quick look at the average by day of the month shows us that the average precipitation is fairly low for both months with a spike in mid-December. This further supports the conclusion that weather is ideal for our proposed beach business.  Plotting precipitation in a histogram by date rather than a "day of the month average" would give us a better visual on outliers for precipitation.
 
-![avg_prcp_plot]()
+![avg_prcp_plot](https://github.com/ChallahBack83/surfs_up/blob/main/Data/avg_prcp_plot.png)
 
 In conclusion, the data shows us that with little variance in weather and low average precipitation, the island of Oahu is a great choice for our proposed surf and ice cream shop.  To help us choose a more specific location, I suggest comparing temperature and precipitation based on weather station id. This will help us focus in on the areas of the island that will best support the proposed business.
 
